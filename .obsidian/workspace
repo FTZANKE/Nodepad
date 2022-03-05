@@ -1,0 +1,98 @@
+{
+  "main": {
+    "id": "8034f152496e9f45",
+    "type": "split",
+    "children": [
+      {
+        "id": "f898e568e6bd5595",
+        "type": "leaf",
+        "state": {
+          "type": "markdown",
+          "state": {
+            "file": "Git命令大全.md",
+            "mode": "preview",
+            "source": false
+          }
+        }
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "20458b5ff500ab30",
+    "type": "split",
+    "children": [
+      {
+        "id": "3ae25c018fe10b09",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "1b070b308a1c5c79",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {}
+            }
+          },
+          {
+            "id": "f5635bee622cef23",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300
+  },
+  "right": {
+    "id": "b37eae8c212a498f",
+    "type": "split",
+    "children": [
+      {
+        "id": "e6eb63683595e886",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "4e8b9ea7f2164dd1",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "Git命令大全.md",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "active": "f898e568e6bd5595",
+  "lastOpenFiles": [
+    "Git命令大全.md",
+    "WEB链接快捷方式.md",
+    "AAAAAAAAAA代码片段.md",
+    "企业级命名规范.md",
+    "跨域.pdf"
+  ]
+}
