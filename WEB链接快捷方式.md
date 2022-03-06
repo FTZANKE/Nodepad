@@ -1,5 +1,3 @@
-# 
-
 <img src="https://image.qcc.com/logo/f67a82132aa79125367870904dd5c333.jpg?x-oss-process=style/logo_200" style="border-radius:10px;">
 
 |                             图标                             |                             地址                             |                   备注                   |
@@ -8,6 +6,8 @@
 | <img src="https://d1icd6shlvmxi6.cloudfront.net/gsr/3728/images/axure9_logo.svg" style="background:#f8f9f9;border-radius:2px;height:20px;" /> | **[工资表模块原型图](https://qkgov6.axshare.com/#id=ebhjmq&p=%E5%B7%A5%E8%B5%84%E8%A1%A8&g=1](https://qkgov6.axshare.com/#id=ebhjmq&p=工资表&g=1))** |                  `任务`                  |
 | <img src="https://d1icd6shlvmxi6.cloudfront.net/gsr/3728/images/axure9_logo.svg" style="background:#f8f9f9;border-radius:2px;height:20px;" /> | **[报销模块原型图](https://5sm3ur.axshare.com/#id=or39vd&p=%E6%96%B0%E5%BB%BA%E5%80%9F%E6%AC%BE%E5%8D%95&g=1](https://5sm3ur.axshare.com/#id=or39vd&p=新建借款单&g=1))** |                  `任务`                  |
 | <img src="https://lhcdn.lanhuapp.com/web/imgs/lanhuLogo1db1cd87.svg" /> | **[团队项目 - 蓝湖 (lanhuapp.com)](https://lanhuapp.com/web/#/item?fid=all&commonly=all)** |               `UI 图平台`                |
+|  |  |  |
+|  |  |  |
 | <img src=" https://www.eolink.com/assets/images/logo/eolink_nav.svg" style="height:20px;"> | **[Eolink APIKit](https://mgsz.w.eolink.com/home/api_studio/?spaceKey=mgsz)** |        `API 管理与测试-妙夬数智`         |
 | <img src="https://i.postimg.cc/dDcYtx6P/image.png" style="height:20px;"> | **[Element - 网站快速成型工具](https://element.eleme.cn/#/zh-CN)** |               `UI 组件库`                |
 | <img src=" https://cn.vuejs.org/images/logo.svg" style="height:20px;"> |             [**Vue.js**](https://cn.vuejs.org/)              |         `渐进式 JavaScript 框架`         |
@@ -21,5 +21,29 @@
 | <img src="https://xg3.jiashumao.net/2022/03/05/MRvYOXtq.svg" style="height:20px;"> |     [MDN Web Docs](https://developer.mozilla.org/zh-CN/)     |                  `MDN`                   |
 | <img src="https://tse3-mm.cn.bing.net/th/id/OIP-C.FEmfjbp4VIbPVo57FTO86QHaHa?pid=ImgDet&rs=1" style="width:30px;border-radius:50%;"> |          **[Swiper中文网](https://swiper.com.cn/)**          |   `轮播图幻灯片js插件,H5页面前端开发`    |
 | <img src="https://animate.style/img/favicon.ico" style="width:30px;"> |          **[Animate.css](https://animate.style/)**           |               `CSS动画库`                |
-|                                                              |                                                              |                                          |
+| <img src="https://www.sass.hk/images/sass.png" style="width:50px;"> | **[Sass中文网](https://www.sass.hk/)** | `CSS扩展语言` |
+| <img src="https://less.bootcss.com/public/img/less_logo.png" style="width:50px;"> | **[Less官方文档（中文版）](https://less.bootcss.com/)** | `CSS 扩展语言` |
+| <img src="https://avatars0.githubusercontent.com/u/67109815?v=4" style="width:40px;"> | **[Tailwind CSS](https://www.tailwindcss.cn/)** | `功能类优先的 CSS 框架` |
+|  |  |  |
+| <img src="https://formulahendry.gallerycdn.vsassets.io/extensions/formulahendry/auto-close-tag/0.5.14/1644313109985/Microsoft.VisualStudio.Services.Icons.Default" style="width:60px;"> | **[Auto Close Tag](https://marketplace.visualstudio.com/items?itemName=formulahendry.auto-close-tag)** |      `HTML 标签自动闭合`      |
+| <img src="https://formulahendry.gallerycdn.vsassets.io/extensions/formulahendry/auto-rename-tag/0.1.10/1644319230173/Microsoft.VisualStudio.Services.Icons.Default" style="width:50px;"> | **[Auto Rename Tag](https://marketplace.visualstudio.com/items?itemName=formulahendry.auto-rename-tag)** |          `HTML 标签同步重命名`           |
+| <img src="https://pranaygp.gallerycdn.vsassets.io/extensions/pranaygp/vscode-css-peek/4.2.0/1620151231705/Microsoft.VisualStudio.Services.Icons.Default" style="width:30px;"> | **[CSS Peek](https://marketplace.visualstudio.com/items?itemName=pranaygp.vscode-css-peek)** | `HTML 中查看 CSS 定义` |
+| <img src="https://vincaslt.gallerycdn.vsassets.io/extensions/vincaslt/highlight-matching-tag/0.10.1/1624720983176/Microsoft.VisualStudio.Services.Icons.Default" style="width:40px;"> | **[Highlight Matching Tag](https://marketplace.visualstudio.com/items?itemName=vincaslt.highlight-matching-tag)** | `高亮匹配标签` |
+| <img src="https://kisstkondoros.gallerycdn.vsassets.io/extensions/kisstkondoros/vscode-gutter-preview/0.30.0/1644076638771/Microsoft.VisualStudio.Services.Icons.Default" style="width:30px;"> | **[Image preview](https://marketplace.visualstudio.com/items?itemName=kisstkondoros.vscode-gutter-preview)** | `图片导入预览` |
+| <img src="https://wix.gallerycdn.vsassets.io/extensions/wix/vscode-import-cost/2.15.0/1612118656126/Microsoft.VisualStudio.Services.Icons.Default" style="width:30px;"> | **[Import Cost](https://marketplace.visualstudio.com/items?itemName=wix.vscode-import-cost)** | `显示导入文件的大小` |
+| <img src="https://ritwickdey.gallerycdn.vsassets.io/extensions/ritwickdey/liveserver/5.7.4/1643011470561/Microsoft.VisualStudio.Services.Icons.Default" style="width:30px;"> | **[Live Server](https://marketplace.visualstudio.com/items?itemName=ritwickdey.LiveServer)** | `创建本地服务器，热更新，实时更新页面` |
+| <img src="https://christian-kohler.gallerycdn.vsassets.io/extensions/christian-kohler/path-intellisense/2.8.0/1644597180462/Microsoft.VisualStudio.Services.Icons.Default" style="width:30px;"> | **[Path Intellisense](https://marketplace.visualstudio.com/items?itemName=christian-kohler.path-intellisense)** | `路径自动补全` |
+| <img src="https://alefragnani.gallerycdn.vsassets.io/extensions/alefragnani/project-manager/12.5.0/1644366706441/Microsoft.VisualStudio.Services.Icons.Default" style="width:30px;"> | **[Project Manager](https://marketplace.visualstudio.com/items?itemName=alefragnani.project-manager)** | `多个项目之间快速切换,侧边栏有图标` |
+| <img src="https://gruntfuggly.gallerycdn.vsassets.io/extensions/gruntfuggly/todo-tree/0.0.215/1642031730914/Microsoft.VisualStudio.Services.Icons.Default" style="width:30px;"> | **[Todo Tree](https://marketplace.visualstudio.com/items?itemName=Gruntfuggly.todo-tree)** | `代办事项树，// FIXME待修复，// TODE功能未完成，侧边栏有图标` |
+| <img src="https://adpyke.gallerycdn.vsassets.io/extensions/adpyke/codesnap/1.3.4/1625238962906/Microsoft.VisualStudio.Services.Icons.Default" style="width:30px;"> | **[CodeSnap](https://marketplace.visualstudio.com/items?itemName=adpyke.codesnap)** | `代码块导出精美图片` |
+| <img src="https://ouweiya.gallerycdn.vsassets.io/extensions/ouweiya/copy-file-name/2.1.2/1579881547105/Microsoft.VisualStudio.Services.Icons.Default" style="width:40px;"> | **[Copy file name](https://marketplace.visualstudio.com/items?itemName=ouweiya.copy-file-name)** | `复制文件名称` |
+| <img src="https://sporiley.gallerycdn.vsassets.io/extensions/sporiley/css-auto-prefix/0.1.7/1532268914151/Microsoft.VisualStudio.Services.Icons.Default" style="width:50px;"> | **[css-auto-prefix](https://marketplace.visualstudio.com/items?itemName=sporiley.css-auto-prefix)** | `自动为 CSS 中的某些属性添加前缀` |
+| <img src="https://stxr.gallerycdn.vsassets.io/extensions/stxr/iconfont-preview/0.0.4/1607845618098/Microsoft.VisualStudio.Services.Icons.Default" style="width:30px;"> | **[iconfont-preview](https://marketplace.visualstudio.com/items?itemName=stxr.iconfont-preview)** | `在 vscode 中预览 iconfont 文件` |
+| <img src="https://syler.gallerycdn.vsassets.io/extensions/syler/ignore/0.0.4/1583600138367/Microsoft.VisualStudio.Services.Icons.Small" style="width:30px;"> | **[Ignore](https://marketplace.visualstudio.com/items?itemName=Syler.ignore)** | `为所有忽略文件添加语法突出显示和自动完成` |
+|  |  |  |
+|  |  |  |
+|  |  |  |
+|  |  |  |
+|  |  |  |
 
+![](https://s2.loli.net/2022/03/06/rcbjPiQY3WGKJVl.jpg)
