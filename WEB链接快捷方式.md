@@ -8,6 +8,9 @@
 | <img src="https://d1icd6shlvmxi6.cloudfront.net/gsr/3728/images/axure9_logo.svg" style="background:#f8f9f9;border-radius:2px;height:20px;" /> | **[报销模块原型图](https://5sm3ur.axshare.com/#id=or39vd&p=%E6%96%B0%E5%BB%BA%E5%80%9F%E6%AC%BE%E5%8D%95&g=1](https://5sm3ur.axshare.com/#id=or39vd&p=新建借款单&g=1))** |                  `任务`                  |
 | <img src="https://lhcdn.lanhuapp.com/web/imgs/lanhuLogo1db1cd87.svg" /> | **[团队项目 - 蓝湖 (lanhuapp.com)](https://lanhuapp.com/web/#/item?fid=all&commonly=all)** |               `UI 图平台`                |
 |  |  |  |
+| localhost | finance-test.localhost | `测试` |
+| localhost | expense-test.localhost | `报销` |
+| localhost | salary-test.localhost | `工资` |
 |  |  |  |
 | <img src=" https://www.eolink.com/assets/images/logo/eolink_nav.svg" style="height:20px;"> | **[Eolink APIKit](https://mgsz.w.eolink.com/home/api_studio/?spaceKey=mgsz)** |        `API 管理与测试-妙夬数智`         |
 | <img src="https://i.postimg.cc/dDcYtx6P/image.png" style="height:20px;"> | **[Element - 网站快速成型工具](https://element.eleme.cn/#/zh-CN)** |               `UI 组件库`                |
@@ -42,9 +45,13 @@
 | <img src="https://stxr.gallerycdn.vsassets.io/extensions/stxr/iconfont-preview/0.0.4/1607845618098/Microsoft.VisualStudio.Services.Icons.Default" style="width:30px;"> | **[iconfont-preview](https://marketplace.visualstudio.com/items?itemName=stxr.iconfont-preview)** | `在 vscode 中预览 iconfont 文件` |
 | <img src="https://syler.gallerycdn.vsassets.io/extensions/syler/ignore/0.0.4/1583600138367/Microsoft.VisualStudio.Services.Icons.Small" style="width:30px;"> | **[Ignore](https://marketplace.visualstudio.com/items?itemName=Syler.ignore)** | `为所有忽略文件添加语法突出显示和自动完成` |
 |  |  |  |
-|  |  |  |
-|  |  |  |
-|  |  |  |
-|  |  |  |
 
 ![](https://s2.loli.net/2022/03/06/rcbjPiQY3WGKJVl.jpg)
+
+![](https://s2.loli.net/2022/03/29/EpvYWdKwm2I1hjl.jpg)
+
+
+
+```Element UI
+oninput="value=value.replace(/[^0-9.]/g,'')" //限制el-input输出小数
+```

@@ -16,6 +16,7 @@
 1、名称：不包括反斜线的字符、数字、代表符和空格的任意组合。同一键中不可有相同的名称
 2、数据类型：包括字符串、二进制和双字节等
 3、数据：值项的具体值，它的大小可以占用64KB
+
 ******************************************************************************
 **第二课 总体结构分析
 **注册表包括以下5个根键
@@ -246,8 +247,7 @@ HKEY_LOCAL_MACHINE\SOFTWARE\Classes\CLSID\{450D8FBA-AD25-11D0-98A8-0800361B1103}
 键值：showinfotip
 修改：0
 18、用真彩色显示图标(需重启）
-位置：HKEY_CURRENT_USER\Control
-Panel\Desktop\WindowMetrics
+位置：HKEY_CURRENT_USER\ControlPanel\Desktop\WindowMetrics
 键值：Shell Icon BPP
 修改：32
 19、更改图标显示尺寸(需重启）
@@ -454,6 +454,7 @@ Manager
 NT\CurrentVersion\Winlogon
 值：PowerdownAfterShutdown
 修改：1
+
 *******************************************************************************
 **第十五课 硬件设置**
 1、启用CPU的二级缓存（需重启）
@@ -479,20 +480,16 @@ NT\CurrentVersion\Winlogon
 
 ## CMD
 
-* 文件或者文件夹的显示隐藏
-  + attrib +h [文件或文件夹]   隐藏文件或文件夹
-  + attrib -h [文件或文件夹]   显示文件或文件夹
-
-* ipconfig /flushdns    刷新DNS解析缓存
-
-* PerceivedType regedit-(text)(字符串值)
-
-- 
-
 ```bash
   NetSh Advfirewall ``set` `allprofiles state off #关闭防火墙
   Netsh Advfirewall show allprofiles      #查看防火墙状态
-  netsh wlan show profiles name="" key=clear	#查看WLAN 
+  netsh wlan show profiles name="" key=clear	#查看WLAN
+  ipconfig /flushdns #刷新DNS解析缓存
+  attrib -h [文件或文件夹] #显示文件或文件夹
+  attrib +h [文件或文件夹] #隐藏文件或文件夹
+  del /a/s/f/q * #进入指定文件系统路径内删除所有普通文件
+  rd /s/q * #进入指定文件系统路径内删除所有非空文件夹
+  xcopy /e/h [文件或文件夹] [文件或文件夹] #复制文件夹到另外一个包括隐藏文件
 ```
 
 ## bat
@@ -538,28 +535,18 @@ echo 文件已还原成功,按任意键离开  & pause >nul
 exit ]()
 ```
 
-## 右键文本文档消失处理
+- 右键文本文档消失处理[^.bat]
 
 ```bash
 Windows Registry Editor Version 5.00
-
 [HKEY_CLASSES_ROOT\.txt]
-
 @="txtfile"
-
 "Content Type"="text/plain"
-
 [HKEY_CLASSES_ROOT\.txt\ShellNew]
-
 "NullFile"="" [HKEY_CLASSES_ROOT\txtfile]
-
 @="文本文档"
-
 [HKEY_CLASSES_ROOT\txtfile\shell]
-
 [HKEY_CLASSES_ROOT\txtfile\shell\open]
-
 [HKEY_CLASSES_ROOT\txtfile\shell\open\command]
-
 @="NOTEPAD.EXE %1"
 ```
