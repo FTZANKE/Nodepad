@@ -1,7 +1,5 @@
 ## JavaScript工具函数
 
-AHao 2112141919
-
 #### **01 为元素添加on方法**
 
 ```js
@@ -2597,6 +2595,19 @@ const createDirIfNotExists = dir => (!fs.existsSync(dir) ? fs.mkdirSync(dir) : u
 // 事例
 createDirIfNotExists('test');
 ```
+
+#### 154 金额千分位  - 逆
+
+- 格式化数字转正常数组
+
+```js
+function delcommafy(num){//去除千分位中的‘，’
+	num=num.replace(/,/gi,'');
+	return num;
+}
+```
+
+
 
 ## 代码片段
 

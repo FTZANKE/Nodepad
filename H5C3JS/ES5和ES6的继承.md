@@ -9,24 +9,24 @@
   - 基本思想：利用原型让一个引用类型继承另一个引用类型的属性和方法，即让原型对象等于另一个类型的实例
   - 基本模式：
 
-  ```
-   1       function SuperType(){
-   2           this.property = true;
-   3       }
-   4       SuperType.prototype.getSuperValue = function(){
-   5           return this.property;
-   6       };
-   7       function SubType(){
-   8           this.subproperty = false;
-   9       }
-  10       \\继承了SuperType
-  11       SubType.prototype = new SuperType();
-  12     
-  13       SubType.prototype.getSubValue = function(){
-  14           return this.subproperty;
-  15       };
-  16       var instance = new SubType();
-  17       alert(instance.getSuperValue());  \\true
+  ```js
+  function SuperType(){
+  	this.property = true;
+  }
+  SuperType.prototype.getSuperValue = function(){
+  	return this.property;
+  };
+  function SubType(){
+  	this.subproperty = false;
+  }
+  \\继承了SuperType
+  SubType.prototype = new SuperType();
+  
+  SubType.prototype.getSubValue = function(){         
+  	return this.subproperty;
+  };
+  var instance = new SubType();
+  alert(instance.getSuperValue());  \\true
   ```
 
   - 最终结果：instance指向SubType的原型，SubType的原型又指向SuperType的原型，getSuperValue()方法任然在SuperType.prototype中，但property则位于SubType.prototype中，这是因为property是一个实例属性，而getSuperValue是一个原型方法。此时，instance.constructor指向的是SuperType。
@@ -88,90 +88,89 @@
 
   - 基本思想：将原型链和借用构造函数技术组合到一起。使用原型链实现对原型属性和方法的继承，用借用构造函数模式实现对实例属性的继承。这样既通过在原型上定义方法实现了函数复用，又能保证每个实例都有自己的属性
 
-    ```
-     1 function Supertype(name){
-     2     this.name = name;
-     3     this.colors = ["red","green","blue"];
-     4 }
-     5 
-     6 Supertype.prototype.sayName = function(){
-     7     console.log(this.name);
-     8 };
-     9 
-    10 function Subtype(name,age){
-    11     \\继承属性
-    12     Supertype.call(this,name);
-    13     this.age  = age;
-    14 }
-    15 
-    16 \\继承方法
-    17 Subtype.prototype = new Supertype();
-    18 Subtype.prototype.constructor = Subtype;
-    19 Subtype.prototype.sayAge = function(){
-    20     console.log(this.age);
-    21 };
-    22 
-    23 var instance1 = new Subtype('Annika',21);
-    24 instance1.colors.push("black");
-    25 \\["red", "green", "blue", "black"]
-    26 console.log(instance1.colors); 
-    27 instance1.sayName(); \\Annika
-    28 instance1.sayAge();  \\21
-    29 
-    30 var instance2 = new Subtype('Anna',22);
-    31 \\["red", "green", "blue"]
-    32 console.log(instance2.colors);
-    33 instance2.sayName();   \\Anna
-    34 instance2.sayAge();    \\22
+    ```js
+     function Supertype(name){
+         this.name = name;
+         this.colors = ["red","green","blue"];
+     }
+     
+     Supertype.prototype.sayName = function(){
+         console.log(this.name);
+     };
+     
+     function Subtype(name,age){
+         \\继承属性
+         Supertype.call(this,name);
+         this.age  = age;
+     }
+     
+     \\继承方法
+     Subtype.prototype = new Supertype();
+     Subtype.prototype.constructor = Subtype;
+     Subtype.prototype.sayAge = function(){
+         console.log(this.age);
+     };
+     
+     var instance1 = new Subtype('Annika',21);
+     instance1.colors.push("black");
+     \\["red", "green", "blue", "black"]
+     console.log(instance1.colors); 
+     instance1.sayName(); \\Annika
+     instance1.sayAge();  \\21
+     
+     var instance2 = new Subtype('Anna',22);
+     \\["red", "green", "blue"]
+     console.log(instance2.colors);
+     instance2.sayName();   \\Anna
+     instance2.sayAge();    \\22
     ```
   - 缺点：无论在什么情况下，都会调用两次超类型构造函数，一次是在创建子类型原型的时候，一次是在子类型构造函数的内部
 - **原型式继承**
 
   - 基本思想：不用严格意义上的构造函数，借助原型可以根据已有的对象创建新对象，还不必因此创建自定义类型，因此最初有如下函数：
 
-    ```
-    1 function object(o){
-    2     function F(){}
-    3     F.prototype = o;
-    4     return new F();
-    5 }
+    ```js
+    function object(o){
+        function F(){}
+        F.prototype = o;
+        return new F();
+     }
     ```
 
     从本质上讲，object()对传入其中的对象执行了一次浅复制
-
-    ```js
-     1 var person = {
-     2     name:'Annika',
-     3     friendes:['Alice','Joyce']
-     4 };
-     5 
-     6 var anotherPerson = object(person);
-     7 anotherPerson.name = 'Greg';
-     8 anotherPerson.friendes.push('Rob');
-     9 
-    10 var yetAnotherPerson = object(person);
-    11 yetAnotherPerson.name = 'Linda';
-    12 yetAnotherPerson.friendes.push('Sophia');
-    13 
-    14 console.log(person.friends);   //['Alice','Joyce','Rob','Sophia']
-    15 
-    ```
-
-    在这个例子中，实际上相当于创建了person的两个副本。
-  - ES5新增Object.create规范了原型式继承，接收两个参数，一个用作新对象原型的对象和（可选的）一个为新对象定义额外属性的对象，在传入一个参数的情况下，Object.create()和object()行为相同。
 
     ```js
     var person = {
         name:'Annika',
         friendes:['Alice','Joyce']
     };
-
+    
+    var anotherPerson = object(person);
+    anotherPerson.name = 'Greg';
+    anotherPerson.friendes.push('Rob');
+    
+    var yetAnotherPerson = object(person);
+    yetAnotherPerson.name = 'Linda';
+    yetAnotherPerson.friendes.push('Sophia');
+    
+    14 console.log(person.friends);   //['Alice','Joyce','Rob','Sophia'] 
+    ```
+    
+  在这个例子中，实际上相当于创建了person的两个副本。
+  - ES5新增Object.create规范了原型式继承，接收两个参数，一个用作新对象原型的对象和（可选的）一个为新对象定义额外属性的对象，在传入一个参数的情况下，Object.create()和object()行为相同。
+  
+    ```js
+    var person = {
+        name:'Annika',
+        friendes:['Alice','Joyce']
+    };
+    
     var anotherPerson = object.create(person,{
         name:{
             value:"Greg"
         }
     });
-
+    
     //用这种方法指定的任何属性都会覆盖掉原型对象上的同名属性
     console.log(anotherPerson.name);   //Greg
     ```
@@ -212,20 +211,20 @@
         this.name = name;
         this.colors = ["red","green","blue"];
     }
-
+    
     Supertype.prototype.sayName = function(){
         console.log(this.name);
     };
-
+    
     function Subtype(name,age){
         \\继承属性
         Supertype.call(this,name);
           this.age  = age;
          }
-
+    
          \\继承方法
          inheritPrototype(Subtype,Supertype);
-
+    
     Subtype.prototype.sayAge = function(){
         console.log(this.age);
     };
