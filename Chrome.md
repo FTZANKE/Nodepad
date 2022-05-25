@@ -11,3 +11,4 @@
 ## 鼠标悬浮标签预览(Tab Hover Card Images)
 
 显示tab悬停卡中的预览图像，如果tab悬停卡启用。[#tab-hover-card-images](chrome://flags/#tab-hover-card-images)
+
