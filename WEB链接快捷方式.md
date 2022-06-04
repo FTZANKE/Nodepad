@@ -58,7 +58,3 @@
 
 
 
-```Element UI
-oninput="value=value.replace(/[^0-9.]/g,'')" //限制el-input输出小数
-```
-
