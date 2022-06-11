@@ -1,4 +1,6 @@
-### BOM:
+[toc]
+
+# BOM
 
 1. BOM：**浏览器对象模型 Browser Object Model**，是Javascript的重要组成部分。它提供了一系列对象用于与浏览器窗口进行交互，这些对象通常统称为BOM。
 2. 常见的BOM对象有哪些?
@@ -17,8 +19,8 @@
 //window对象 --- 是JS的最顶层对象，其他的BOM对象都是window对象的属性。
 //提供了独立于内容与浏览器窗口进行交互的对象，使用浏览器对象模型可以实现与HTML的交互。
 //window.属性名 = "属性值";
-window.alert('提示信息')
-window.confirm("确认信息")
+window.alert('提示信息');
+window.confirm("确认信息");
 window.prompt("弹出输入框")
 window.open("url地址"，'打开的方式（可以是-self或-black）'，'新窗口的大小'）
 window.close() //关闭当前的网页。 注：存在兼容性问题
@@ -47,7 +49,7 @@ document.attribute
 //location对象：浏览器当前URL信息。
 //对象用于获得当前页面的地址 (URL)，并把浏览器重定向到新的页面。
 window.location 对象在编写时可不使用 window 这个前缀。 一些例子：
-location.herf = 'url地址'
+location.herf = 'url地址';
 location.hostname 返回 web 主机的域名
 location.pathname 返回当前页面的路径和文件名
 location.port 返回 web 主机的端口 （80 或 443）

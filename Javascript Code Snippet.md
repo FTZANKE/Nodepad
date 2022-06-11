@@ -1,3 +1,5 @@
+[toc]
+
 #### **提取页面代码中所有网址**
 
 ```js
@@ -309,28 +311,12 @@ function utf8_decode(str_data) {
 }
 ```
 
-#### **清除所有空格**
+#### **正则校验空格**
 
 ```js
-const clearSpaces = (str) => {
-    return str.replace(/[ ]/g, '');
-}
-```
-
-#### **校验是否包含空格**
-
-```js
-const haveSpace = (str) => {
-    return /[ ]/.test(str);
-}
-```
-
-#### **校验是否包含中文字符(包括中文标点符号)**
-
-```js
-const haveCNChars = (str) => {
-    return /[\u4e00-\u9fa5]/.test(str);
-}
+const clearSpaces = (str) => return str.replace(/[ ]/g, ''); // 清除所有空格
+const haveSpace = (str) => return /[ ]/.test(str);//校验是否包含空格
+const haveCNChars = (str) => return /[\u4e00-\u9fa5]/.test(str);// 校验是否包含中文字符
 ```
 
 #### **复制内容到剪切板**
@@ -751,4 +737,53 @@ const tomorrow = () => {
 
 tomorrow();
 // 2019-09-08 (if current date is 2018-09-08)
+```
+
+#### **格式化输出数字**
+
+```js
+/** 
+ * 方案一：保留小数点后两位，多余切割掉 调用方法： @keyup.native="val=_toFixed2(val)"
+ * @param num 输入的数字 (String||Num)
+ * @returns {*}
+ */
+export function _toFixed2(num) {
+  let price = num;
+  price = price.replace(/[^\d.]/g, ""); //清除“数字”和“.”以外的字符
+  price = price.replace(/\.{2,}/g, "."); //只保留第一个. 清除多余的
+  price = price.replace(".", "$#$").replace(/\./g, "").replace("$#$", ".");
+  price = price.replace(/^(-)*(\d+)\.(\d\d).*$/, '$1$2.$3'); //只能输入两个小数
+  return price
+}
+/**
+ * 方案二： _toFixed2() 升级版
+ * @param num 输入的数字 (String||Num)
+ * @param max 需要保留小数点后 (max默认是保留两位<2>，<=0 就是整数)
+ * @returns {*}
+ */
+export function _toFixed3(num, max=2) {
+  if(max <= 0) {
+    num = num.replace(/\D/g, "")
+  } else {
+    let R_d = new RegExp(`^(-)*(\\d+)\\.(${"\\d".repeat(max)}).*$`);
+    num = num.replace(/[^\d.]/g, "").replace(/\.{2,}/g, ".").replace(".", "$#$").replace(/\./g, "").replace("$#$", ".").replace(R_d, '$1$2.$3');
+  }
+  return num
+}
+```
+
+**:warning: v-model不要使用（.number）修饰符   比如：v.model.number**
+
+```vue
+<template>
+	<el-input v-model="row.paymentAmount" @keyup.native="row.paymentAmount=_toFixed3(row.paymentAmount,2)"/>
+</template>
+<script>
+    import {_toFixed3} from "@/utils";
+    export default {
+        methods: {
+            _toFixed3,
+        }
+    }
+</script>
 ```

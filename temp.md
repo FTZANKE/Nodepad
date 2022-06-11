@@ -1,33 +1,62 @@
+## 客户
 
-
-## changeIndex   首页改版拉的分支
-
+```vue
+<template>
+<div class="same_text flex_clounm_left_center">
+    <label class="require">客户</label>
+    <el-select v-model="ruleForm.personId" placeholder="请选择" @change="clentChange">
+        <el-option v-for="item in clientList" :key="item.id" :label="item.customerName" :value="item.id"/>
+    </el-select>
+    </div>
+</template>
+<script>
+    import {getAccountCustomersList} from '@/api/financeSetting';//客户列表
+    export default {
+        methods: {
+            // 客户列表
+            getAccountCustomersList(obj = {}) {
+                obj = Object.assign(obj, {
+                    customersType: 2
+                })
+                getAccountCustomersList(obj).then(res => {
+                    this.clientList = res.data.list;
+                })
+            },
+        }
+    }
+</script>
 ```
 
+## 供应商
+
+```vue
+<template></template>
+<div class="same_text flex_clounm_left_center">
+    <label class="require">供应商</label>
+    <el-select v-model="ruleForm.clientId" placeholder="请选择" @change="clentChange">
+        <el-option v-for="item in clientList" :key="item.id" :label="item.customerName" :value="item.id"/>
+    </el-select>
+</div>
+</template>
+<script>
+    import {queryClients} from "@/api/fundsManagement";// 供应商列表
+    export default {
+        methods: {
+            // 供应商列表
+            queryClients() {
+                queryClients({customersType: 2, status: 1}).then((res) => {
+                    this.clientList = res.data;
+                });
+            },
+        }
+    }
+</script>
 ```
 
-## 6月的绩效你主要任务是
+AirPods(第三代) RMB 1399   58元/月(24期)
 
-- 资金模块的迭代，任务主要是：
+iPhone 13 Pro  Max RMB 9799 408元/月(24期)
 
-  1. 付款单
+MacBook Pro 16英寸  64+1T 29499元 1299元/月(24期)
 
-     - 列表
-
-     - 新增 / 详情 [^有二级弹窗]
-
-  2. 预付款单
-
-     - 列表
-     - 新增 / 详情  [^有二级弹窗]
-
-  3. 核销单
-
-     - 列表
-     - 新增 / 详情 [^此页面有5种核销类型 前三种相似 后两种相似]
-
-  4. 应付明细表
-
-  5. 应付汇总表
-
-  6. 供应商对账单
+=40697元

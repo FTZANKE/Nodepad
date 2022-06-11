@@ -8,7 +8,7 @@ The `css-loader` interprets `@import` and `url()` like `import/require()` and wi
 
 To begin, you'll need to install `css-loader`:
 
-```
+```bash
 npm install --save-dev css-loader
 ```
 
@@ -16,13 +16,13 @@ Then add the plugin to your `webpack` config. For example:
 
 **file.js**
 
-```
+```js
 import css from "file.css";
 ```
 
 **webpack.config.js**
 
-```
+```js
 module.exports = {
   module: {
     rules: [
@@ -59,7 +59,7 @@ Allow to enable/disables handling the CSS functions `url` and `image-set`. If se
 
 Examples resolutions:
 
-```
+```js
 url(image.png) => require('./image.png')
 url('image.png') => require('./image.png')
 url(./image.png) => require('./image.png')
@@ -70,7 +70,7 @@ image-set(url('image2x.png') 1x, url('image1x.png') 2x) => require('./image1x.pn
 
 To import assets from a `node_modules` path (include `resolve.modules`) and for `alias`, prefix it with a `~`:
 
-```
+```js
 url(~module/image.png) => require('module/image.png')
 url('~module/image.png') => require('module/image.png')
 url(~aliasDirectory/image.png) => require('otherDirectory/image.png')
@@ -82,7 +82,7 @@ Enable/disable `url()` resolving.
 
 **webpack.config.js**
 
-```
+```js
 module.exports = {
   module: {
     rules: [
@@ -104,7 +104,7 @@ Allow to filter `url()`. All filtered `url()` will not be resolved (left in the 
 
 **webpack.config.js**
 
-```
+```js
 module.exports = {
   module: {
     rules: [
@@ -139,7 +139,7 @@ Allows to enables/disables `@import` at-rules handling. Control `@import` resolv
 
 Examples resolutions:
 
-```
+```js
 @import 'style.css' => require('./style.css')
 @import url(style.css) => require('./style.css')
 @import url('style.css') => require('./style.css')
@@ -151,7 +151,7 @@ Examples resolutions:
 
 To import styles from a `node_modules` path (include `resolve.modules`) and for `alias`, prefix it with a `~`:
 
-```
+```js
 @import url(~module/style.css) => require('module/style.css')
 @import url('~module/style.css') => require('module/style.css')
 @import url(~aliasDirectory/style.css) => require('otherDirectory/style.css')
@@ -163,7 +163,7 @@ Enable/disable `@import` resolving.
 
 **webpack.config.js**
 
-```
+```js
 module.exports = {
   module: {
     rules: [
@@ -193,7 +193,7 @@ Allow to filter `@import`. All filtered `@import` will not be resolved (left in 
 
 **webpack.config.js**
 
-```
+```js
 module.exports = {
   module: {
     rules: [
@@ -238,7 +238,7 @@ Using `false` value increase performance because we avoid parsing **CSS Modules*
 
 **webpack.config.js**
 
-```
+```js
 module.exports = {
   module: {
     rules: [
