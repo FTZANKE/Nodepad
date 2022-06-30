@@ -742,33 +742,59 @@ tomorrow();
 #### **格式化输出数字**
 
 ```js
-/** 
- * 方案一：保留小数点后两位，多余切割掉 调用方法： @keyup.native="val=_toFixed2(val)"
- * @param num 输入的数字 (String||Num)
- * @returns {*}
- */
+// 保留小数点后两位，多余切割掉 调用方法： @keyup.native="val=_toFixed2(val)"
 export function _toFixed2(num) {
-  let price = num;
+  let price;
+  if (num) {
+    price = typeof num === "string" ? num : num.toString();
+  } else {
+    price = "0";
+  }
   price = price.replace(/[^\d.]/g, ""); //清除“数字”和“.”以外的字符
   price = price.replace(/\.{2,}/g, "."); //只保留第一个. 清除多余的
   price = price.replace(".", "$#$").replace(/\./g, "").replace("$#$", ".");
-  price = price.replace(/^(-)*(\d+)\.(\d\d).*$/, '$1$2.$3'); //只能输入两个小数
-  return price
+  price = price.replace(/^(\-)*(\d+)\.(\d\d).*$/, "$1$2.$3"); //只能输入两个小数
+  // // 去除整数前的0和小数点后多余的0，如011.020300 => 11.0203
+  // const reg1 = /0*([1-9]\d*|0\.\d+)/;
+  // const reg2 = /(?:\.0*|(\.\d+?)0+)$/;
+  // price = price.replace(reg1, '$1').replace(reg2, '$1');
+  return price;
 }
 /**
- * 方案二： _toFixed2() 升级版
- * @param num 输入的数字 (String||Num)
+ * _toFixed2() 升级版 此函数输入负输出 "0"
+ * @param num 输入的数字 （String||Num）
  * @param max 需要保留小数点后 (max默认是保留两位<2>，<=0 就是整数)
+ * @param maxNum 最大数 超过这个数，则就是这个数
  * @returns {*}
  */
-export function _toFixed3(num, max=2) {
-  if(max <= 0) {
-    num = num.replace(/\D/g, "")
+export function _toFixed3(num, max = 2, maxNum = "T") {
+  // console.log(num, max, maxNum)
+  num = `${num}`;
+  if (num * 1 <= 0) {
+    num = "0";
   } else {
-    let R_d = new RegExp(`^(-)*(\\d+)\\.(${"\\d".repeat(max)}).*$`);
-    num = num.replace(/[^\d.]/g, "").replace(/\.{2,}/g, ".").replace(".", "$#$").replace(/\./g, "").replace("$#$", ".").replace(R_d, '$1$2.$3');
+    if (max <= 0) {
+      num = num.replace(/\D/g, "");
+    } else {
+      let R_d = new RegExp(`^(-)*(\\d+)\\.(${"\\d".repeat(max)}).*$`);
+      num = num
+        .replace(/[^\d.]/g, "")
+        .replace(/\.{2,}/g, ".")
+        .replace(".", "$#$")
+        .replace(/\./g, "")
+        .replace("$#$", ".")
+        .replace(R_d, "$1$2.$3");
+    }
   }
-  return num
+  if (maxNum !== "T") {
+    if (maxNum > 0) {
+      if (num * 1 > maxNum * 1) num = `${maxNum}`;
+    } else {
+      num = `${maxNum}`;
+    }
+  }
+  num = num.replace(/^0*([1-9]\d*|0\.\d+)/, '$1');// 去除首位的 0
+  return num;
 }
 ```
 
@@ -787,3 +813,42 @@ export function _toFixed3(num, max=2) {
     }
 </script>
 ```
+
+#### **检查值是否是数字**
+
+```js
+const isNumber = (val) => {
+    const regPos = /^\d+(\.\d+)?$/; // 非负浮点数
+    const regNeg = /^(-(([0-9]+\.[0-9]*[1-9][0-9]*)|([0-9]*[1-9][0-9]*\.[0-9]+)|([0-9]*[1-9][0-9]*)))$/; // 负浮点数
+    return regPos.test(val) || regNeg.test(val);
+},
+```
+
+#### **表达式算法**
+
+```js
+var asd = "100/2*3"
+var jsonD = new Function('return ' + asd)();
+console.log(jsonD)
+
+// 支持数组表达式
+const zh_E = (val,row) = {
+    // console.log(val,row);
+    // let arr_ = [];
+    let indexOf_ = ['+','-','*','/','(',')'];
+    let str = ''
+    val.forEach(v => {
+        if (indexOf_.indexOf(v) == -1) {
+            // arr_.push(isNaN(v) ? (row[v] ? row[v] : 0) : v);
+            str += isNaN(v) ? (row[v] ? row[v] : 0) : v;
+        } else {
+            str += v;
+            // arr_.push(v);
+        }
+    })
+    var jsonD = new Function('return ' + str)();
+    // console.log(jsonD);
+    return jsonD;
+}
+```
+
