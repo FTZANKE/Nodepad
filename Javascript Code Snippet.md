@@ -852,3 +852,116 @@ const zh_E = (val,row) = {
 }
 ```
 
+#### **数组根据 `时间key` 排序**
+
+```js
+/**
+ * 按指定的键值对对象数组进行排序，并返回排序后的数组
+ * @param arrObj - 要排序的数组
+ * @param KeyTime - 数组对象中的时间字段
+ * @param [sortType=max] - 排序类型，默认为'max'，即最大的时间排在最前面，如果要按升序排序，可以设置为'min'
+ */
+export const MsgSort = (arrObj, KeyTime, sortType = 'max') => {
+  arrObj.sort((old, next) => {
+    let t1 = new Date(Date.parse(old[KeyTime].replace(/-/g, "/")))
+    let t2 = new Date(Date.parse(next[KeyTime].replace(/-/g, "/")))
+    return t2.getTime() - t1.getTime();
+  })
+  if (sortType === 'max') return arrObj;
+  if (sortType === 'min') return arrObj.reverse();
+}
+
+console.table(MsgSort([
+    {date: '2020-05-15', id: '1'},
+    {date: '2020-05-14', id: '2'},
+    {date: '2020-05-16', id: '3'}
+], 'date', 'min'));
+```
+
+#### **`toFixed` 修复**
+
+```js
+/**
+ * toFixed 修复
+ * 如果精度指定的小数位数小于实际数字，则对数字进行四舍五入。
+ * 如果精度指定的小数位数大于实际数字，则用尾随零填充该数字。
+ * 例子：
+ *    toFixedFun(1.255, 2) ==> 1.26
+ *    toFixedFun(1.255, 3) ==> 1.255
+ *    toFixedFun(1.225, 2) ==> 1.23
+ *    toFixedFun(1.225, 4) ==> 1.2250
+ * @param data - 待处理数
+ * @param len - 要保留的小数位数
+ * @returns
+ */
+export function toFixedRestore(data, len) {
+  const number = Number(data);
+  if (isNaN(number) || number >= Math.pow(10, 21)) {
+    return number.toString();
+  }
+  if (typeof (len) === 'undefined' || len === 0) {
+    return (Math.round(number)).toString();
+  }
+  let result = number.toString();
+  const numberArr = result.split('.');
+
+  if (numberArr.length < 2) {
+    // 整数的情况
+    return padNum(result);
+  }
+  const intNum = numberArr[0]; // 整数部分
+  const deciNum = numberArr[1];// 小数部分
+  const lastNum = deciNum.substr(len, 1);// 最后一个数字
+
+  if (deciNum.length === len) {
+    // 需要截取的长度等于当前长度
+    return result;
+  }
+  if (deciNum.length < len) {
+    // 需要截取的长度大于当前长度 1.3.toFixed(2)
+    return padNum(result);
+  }
+  // 需要截取的长度小于当前长度，需要判断最后一位数字
+  result = `${intNum}.${deciNum.substr(0, len)}`;
+  if (parseInt(lastNum, 10) >= 5) {
+    // 最后一位数字大于5，要进位
+    const times = Math.pow(10, len); // 需要放大的倍数
+    let changedInt = Number(result.replace('.', ''));// 截取后转为整数
+    changedInt++; // 整数进位
+    changedInt /= times;// 整数转为小数，注：有可能还是整数
+    result = padNum(`${changedInt}`);
+  }
+  return result;
+  // 对数字末尾加0
+  function padNum(num) {
+    const dotPos = num.indexOf('.');
+    if (dotPos === -1) {
+      // 整数的情况
+      num += '.';
+      for (let i = 0; i < len; i++) {
+        num += '0';
+      }
+      return num;
+    } else {
+      // 小数的情况
+      const need = len - (num.length - dotPos - 1);
+      for (let j = 0; j < need; j++) {
+        num += '0';
+      }
+      return num;
+    }
+  }
+}
+```
+
+#### **限制输入正负数和小数 Element UI 2.0**
+
+```js
+// 限制正负数和小数  @input="row.receivables = regSplicE($event, row.receivables)"
+export function regSplicE(v, val) {
+  let _val = val
+  if(/^-?\d+(,\d{3})*(\.\d{1,2})?$/.test(v) || v === '-' || v === '') _val = v
+  return _val
+}
+```
+
