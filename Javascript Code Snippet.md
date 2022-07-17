@@ -469,7 +469,7 @@ const detectDeviceType = () =>
 detectDeviceType(); // "Mobile" or "Desktop"
 ```
 
-#### **金额千分位  - 逆**
+#### 金额千分位  - 逆
 
 ```js
 //去除千分位中的‘，’ 保留.00
@@ -614,7 +614,7 @@ maxN([1, 2, 3]); // [3]
 maxN([1, 2, 3], 2); // [3,2]
 ```
 
-#### **查找数组中前 n 位最小的数**
+#### 查找数组中前 n 位最小的数
 
 ```js
 const minN = (arr, n = 1) => [...arr].sort((a, b) => a - b).slice(0, n);
@@ -819,7 +819,7 @@ export function _toFixed3(num, max = 2, maxNum = "T") {
 ```js
 const isNumber = (val) => {
     const regPos = /^\d+(\.\d+)?$/; // 非负浮点数
-    const regNeg = /^(-(([0-9]+\.[0-9]*[1-9][0-9]*)|([0-9]*[1-9][0-9]*\.[0-9]+)|([0-9]*[1-9][0-9]*)))$/; // 负浮点数
+        const regNeg = /^(-((\d+\.\d*[1-9]\d*)|(\d*[1-9]\d*\.\d+)|(\d*[1-9]\d*)))$/; // 负浮点数
     return regPos.test(val) || regNeg.test(val);
 },
 ```
